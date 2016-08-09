@@ -30,7 +30,7 @@ var width = Math.max(960, window.innerWidth * 0.9),
     height = Math.max(500, window.innerHeight * 0.9);
 
 var projection = d3.geoMercator()
-    .scale((1 << 21)/ (Math.PI * 2) )
+    .scale( 1 / (Math.PI * 2) )
     .translate([0, 0]);
 
 var path = d3.geoPath()
@@ -54,16 +54,18 @@ var vector = svg.append("path");
 
 var center = projection([-0.023, 51.5183]);
 
-
+/*
 d3.json("./assets/topo_wpc.json", function(error, uk) {
   if (error) throw error;
   vector.datum(topojson.mesh(uk, uk.objects.wpc));
 });
 
+*/
+
 svg.call(zoom)
     .call(zoom.transform, d3.zoomIdentity
     .translate(width / 2, height / 2)
-    .scale(1 << 12)
+    .scale(1 << 20)
     .translate(-center[0], -center[1]));
 
 function zoomed() {
