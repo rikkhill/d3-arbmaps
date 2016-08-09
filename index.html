@@ -136,7 +136,11 @@ d3.json("./assets/topo_wpc.json", function(error, uk) {
 
     var wards = topojson.feature(uk, uk.objects.wpc).features;
 
-    console.log(wards[1]);
+    console.log(wards.length);
+
+    wards = wards.filter((d) => london.includes(d.properties.PCON13NM));
+
+    console.log(wards.length);
 
     vector.data(wards).enter()
         .append("path")
