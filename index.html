@@ -56,8 +56,15 @@ var center = projection([-0.023, 51.5183]);
 
 
 d3.json("./assets/topo_wpc.json", function(error, uk) {
-  if (error) throw error;
-  vector.datum(topojson.mesh(uk, uk.objects.wpc));
+    if (error) throw error;
+
+    var wards = topojson.feature(uk, uk.objects.wpc).features;
+
+    svg.selectAll(".wpc")
+        .data(wards).enter()
+        .append("path")
+        .attr("d", path)
+        .attr("fill", function() { return colrange(Math.random())});
 });
 
 
