@@ -30,7 +30,7 @@ var width = Math.max(960, window.innerWidth * 0.9),
     height = Math.max(500, window.innerHeight * 0.9);
 
 var projection = d3.geoMercator()
-    .scale(1 / (Math.PI * 2) )
+    .scale((1 << 21)/ (Math.PI * 2) )
     .translate([0, 0]);
 
 var path = d3.geoPath()
@@ -40,7 +40,7 @@ var tile = d3.tile()
     .size([width, height]);
 
 var zoom = d3.zoom()
-    .scaleExtent([1 << 200, 1 << 25])
+    .scaleExtent([1 << 20, 1 << 25])
     .on("zoom", zoomed);
 
 var svg = d3.select("svg")
