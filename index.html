@@ -63,8 +63,7 @@ d3.json("./assets/topo_wpc.json", function(error, uk) {
     svg.selectAll(".wpc")
         .data(wards).enter()
         .append("path")
-        .attr("d", path)
-        .attr("fill", function() { return colrange(Math.random())});
+        .attr("d", path);
 });
 
 
@@ -87,8 +86,10 @@ function zoomed() {
       .scale(transform.k / (Math.PI * 2))
       .translate([transform.x, transform.y]);
 
-  vector
-      .attr("d", path);
+  svg.selectAll(".wpc")
+        .scale(transform.k)
+        .translate([transform.x, transform.y])
+        ();
 
   var image = raster
       .attr("transform", stringify(tiles.scale, tiles.translate))
