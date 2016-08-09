@@ -54,13 +54,13 @@ var vector = svg.append("path");
 
 var center = projection([-0.023, 51.5183]);
 
-/*
+
 d3.json("./assets/topo_wpc.json", function(error, uk) {
   if (error) throw error;
   vector.datum(topojson.mesh(uk, uk.objects.wpc));
 });
 
-*/
+
 
 svg.call(zoom)
     .call(zoom.transform, d3.zoomIdentity
